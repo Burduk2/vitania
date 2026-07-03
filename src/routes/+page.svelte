@@ -6,7 +6,10 @@
 
 	let { data } = $props();
 
-	let messages = $state<App.Message[]>(data.messages);
+	let messages = $state<App.Message[]>([]);
+	$effect(() => {
+		messages = data.messages;
+	});
 
 	let ws: WebSocket;
 	onMount(() => {
